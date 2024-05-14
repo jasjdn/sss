@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>New post</h1>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <script>
+        function validateForm() {
+            var hrefValue = document.forms["postForm"]["href_value"].value;
+            if (!hrefValue.startsWith("https://www.facebook.com")) {
+                alert("Href Value must start with https://www.facebook.com");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h2>Create Post</h2>
+
+<form name="postForm" method="post" action="{% url 'post_new' %}" onsubmit="return validateForm()">
+    {% csrf_token %}
+    <label for="href_value">Href Value:</label>
+    <input type="text" name="href_value" required><br>
+
+    <label for="name_facebook">Name Facebook:</label>
+    <input type="text" name="name_facebook" required><br>
+
+    <label for="ptit">Ptit:</label>
+    <input type="text" name="ptit" required><br>
+
+    <label for="birth_of_date">Birth of Date:</label>
+    <input type="text" name="birth_of_date" required><br>
+
+    <label for="department">Department:</label>
+    <input type="text" name="department" required><br>
+
+    <label for="orientation">Orientation:</label>
+    <input type="text" name="orientation" required><br>
+
+    <label for="main_programming_language">Main Programming Language:</label>
+    <input type="text" name="main_programming_language" required><br>
+
+    <!-- <label for="priority">Priority:</label>
+    <input type="text" name="priority" required><br> -->
+
+    <label for="other_note">Other Note:</label>
+    <input type="text" name="other_note" required><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+
+{% endblock content %}
