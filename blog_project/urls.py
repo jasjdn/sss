@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("blog.urls")),  # new
-    path("ay/", views.ay),
+    # path("ay/", views.ay),
 
 
 
